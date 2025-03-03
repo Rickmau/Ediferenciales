@@ -24,7 +24,7 @@ class LandingPage extends StatelessWidget {
     'Clasificación de ecuaciones diferenciales',
     'Existencia y unicidad de solución',
     'Integración directa',
-    'Integración por factor integral'
+    'Integración por factor integrante'
   ];
 
   @override
@@ -107,11 +107,17 @@ class TopicDetailPage extends StatelessWidget {
       case 'Clasificación de ecuaciones diferenciales':
         return 'Las ecuaciones diferenciales pueden clasificarse según varios criterios: \n- Ordinarias o parciales \n- Lineales o no lineales \n- Homogéneas o no homogéneas \n- Grado de la ecuación';
       case 'Existencia y unicidad de solución':
-        return 'El teorema de existencia y unicidad establece condiciones bajo las cuales una ecuación diferencial tiene una solución única. Se basa en el teorema de Picard-Lindelöf.';
+        return 'En el caso de las Ecuaciones Diferenciales (ED’s), existen 3 casos particulares que se pueden presentar al obtener las soluciones de una ED Ordinaria de Primer Orden, sobre todo si estas soluciones no se encuentran dentro de los límites que enuncia el Teorema de Existencia y Unicidad, y es en esta circunstancia particular, cuando se presentan los casos en donde la solución de las ED’s Ordinarias de Primer Orden, pueden ser:\n\n'
+            '– Una solución Única (cómo en el caso en donde la solución si está dentro de los límites del Teorema de Existencia y Unicidad)\n'
+            '– Una infinidad de soluciones\n'
+            '– Ninguna solución';
       case 'Integración directa':
-        return 'El método de integración directa se usa en ecuaciones diferenciales separables. Se reescribe la ecuación en términos diferenciales y se integra directamente ambos lados.';
-      case 'Integración por factor integral':
-        return 'El método del factor integrante es una técnica que permite resolver ecuaciones diferenciales lineales de primer orden multiplicando por una función especial llamada factor integrante, que facilita su solución.';
+        return 'El método de integración directa es una técnica utilizada para resolver ecuaciones diferenciales ordinarias (EDO) cuando éstas son exactas o tienen una forma que permite obtener la solución de manera inmediata. Este método se basa en integrar directamente la ecuación diferencial sin necesidad de transformaciones adicionales complejas.\n\n'
+            'El método se utiliza principalmente en ecuaciones de primer orden, aunque también se puede aplicar a ecuaciones de orden superior que tengan una estructura sencilla.';
+      case 'Integración por factor integrante':
+        return 'El método de factor integrante es una técnica comúnmente utilizada para resolver ecuaciones diferenciales de primer orden que no son exactas o no se pueden resolver mediante métodos simples, como las ecuaciones lineales de primer orden. Este método transforma una ecuación diferencial no exacta en una exacta, de modo que luego se puede resolver por integración directa.\n\n'
+            'Este método se aplica principalmente a las ecuaciones diferenciales lineales de primer orden.\n\n'
+            'μ(x) = e^(∫ p(x)dx)\n\n';
       default:
         return 'Contenido no disponible';
     }
@@ -124,14 +130,12 @@ class TopicDetailPage extends StatelessWidget {
         title: Text(topic),
         backgroundColor: Colors.redAccent,
       ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Text(
-            getTopicContent(),
-            style: const TextStyle(fontSize: 20),
-            textAlign: TextAlign.center,
-          ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Text(
+          getTopicContent(),
+          style: const TextStyle(fontSize: 20),
+          textAlign: TextAlign.left,
         ),
       ),
     );
